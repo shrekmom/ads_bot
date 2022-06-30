@@ -10,7 +10,7 @@ do
 done
 
 
-sed '/^$/d;/^#/d;s/\://g;s/\=//g;s/\-//g;s/\<localhost\>//g;s/\([0-9]*\.[0-9]*\.[0-9]*\.[0.9]*\)//g;s/[0-9]*//g;s/ //g;' ad_list.txt > ad_list_2.txt
+sed 's/\localhost//g;/^#/d;s/\::1//g;s/\=//g;s/\-//g;s/\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\)//g;s/ //g;/^$/d;' ad_list.txt > ad_list_2.txt
 
 
 perl -CIOED -p -e 's/\p{Script_Extensions=Han}/$& /g' ad_list_2.txt > ad_final_list.txt
